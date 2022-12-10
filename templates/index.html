@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-</head>
-<body>
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
+{% block content %}
 <h1>My Library</h1>
+    {% if books == [] %}
+    <p>Library is empty.</p>
+    {% endif %}
     <ul>
         {% for book in books %}
         <li>{{book.title}} - {{book.author}} - {{book.rating}}</li>
         {% endfor%}
     </ul>
-    
+<hr>
 <a href="{{url_for('add')}}">Add New Book</a>
-</body>
-</html>
+<hr>
+{% endblock %}

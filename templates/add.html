@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Book</title>
-</head>
-<body>
-    <form action="{{url_for('add')}}" method="POST">
-        <label>Book Name</label>
-        <input name="title" type="text">
-        <label>Book Author</label>
-        <input name="author" type="text">
-        <label>Rating</label>
-        <input name="rating" type="text">
-        <button type="submit">Add Book</button>
-    </form>
-</body>
-</html>
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h1>Add a New Book into the database</h1>
+        {{ wtf.quick_form(form, novalidate=True) }}
+    </div>
+  </div>
+</div>
+<hr>
+<p class="space-above"><a href="{{url_for('home')}}">Chekout all the Books</a></p>
+<hr>
+{% endblock %}
