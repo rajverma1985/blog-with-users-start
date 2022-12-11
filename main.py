@@ -57,5 +57,10 @@ def add():
     return render_template('add.html', form=form)
 
 
+@app.route('/edit_rating')
+def edit_rating():
+    return render_template('edit_rating.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)

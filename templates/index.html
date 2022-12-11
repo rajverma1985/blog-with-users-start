@@ -15,6 +15,7 @@
     {% endif %}
     <ul>
         {% for book in books %}
+        <a href="{{url_for('edit_rating')}}">Edit Rating</a>
         <li>{{book.title}} - {{book.author}} - {{book.rating}}</li>
         {% endfor%}
     </ul>
