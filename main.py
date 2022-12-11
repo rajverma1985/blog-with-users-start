@@ -40,6 +40,11 @@ class BooksForm(FlaskForm):
     submit = SubmitField('Add Book')
 
 
+class EditForm(FlaskForm):
+    rating = IntegerField('Rating', validators=[DataRequired()])
+    submit = SubmitField('Change Rating')
+
+
 @app.route('/')
 def home():
     all_books = db.session.query(Books).all()
@@ -57,9 +62,10 @@ def add():
     return render_template('add.html', form=form)
 
 
-@app.route('/edit_rating')
-def edit_rating():
-    return render_template('edit_rating.html')
+@app.route('/edit_rating/<int:id>', methods=['GET', 'POST'])
+def edit_rating(id):
+    form = EditForm()
+    return render_template('edit_rating.html', id=id, form=form)
 
 
 if __name__ == "__main__":
