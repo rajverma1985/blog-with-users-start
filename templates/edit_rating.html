@@ -15,6 +15,8 @@
     <div class="col-sm-12 col-md-8">
       <h1>Edit a Book</h1>
         {{ wtf.quick_form(form, novalidate=True) }}
+        <p>Book Name: {{book.title}}</p>
+        <p>Current Rating {{book.rating}}</p>
     </div>
   </div>
 </div>

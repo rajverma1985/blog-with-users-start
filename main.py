@@ -68,5 +68,11 @@ def edit_rating(id):
     return render_template('edit_rating.html', id=id, form=form)
 
 
+@app.route('/delete_book/<int:id>', methods=['GET', 'POST'])
+def edit_rating(id):
+    # form = EditForm()
+    return render_template('index.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
