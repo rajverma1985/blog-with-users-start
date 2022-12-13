@@ -51,8 +51,8 @@ def add():
 @app.route('/edit_rating/', methods=['GET', 'POST'])
 def edit_rating():
     form = EditForm()
-    if request.method == "POST":
-        book_id = request.args.get("id")
+    if form.validate_on_submit() and request.method == "POST":
+        book_id = request.args.get("edit_book_id")
         update_book = Books.query.get(book_id)
         update_book.rating = request.form["rating"]
         db.session.commit()
@@ -64,7 +64,7 @@ def edit_rating():
 
 @app.route('/delete_book/', methods=['GET'])
 def delete_book():
-    book_id = request.args.get('id')
+    book_id = request.args.get('del_book_id')
     del_book = Books.query.get(book_id)
     db.session.delete(del_book)
     db.session.commit()
